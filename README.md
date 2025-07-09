@@ -28,4 +28,4 @@ npm run dev
 
 ## Демо приложения
 
-Смотреть [здесь]()
+Смотреть [здесь](https://ilyakamovich.github.io/caspel-test-project/)
