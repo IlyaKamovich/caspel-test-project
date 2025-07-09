@@ -37,7 +37,7 @@ const ModalForm: FC<IModalForm> = ({ initialData }) => {
 	} = useForm<TableDataItem>({
 		resolver: zodResolver(ModalFormSchema),
 		defaultValues: {
-			key: generateRandomId(),
+			key: '',
 			value: 0,
 			name: '',
 			date: new Date(),
@@ -46,7 +46,7 @@ const ModalForm: FC<IModalForm> = ({ initialData }) => {
 
 	useEffect(() => {
 		reset({
-			key: initialData?.key ?? generateRandomId(),
+			key: initialData?.key ?? '',
 			value: initialData?.value ?? 0,
 			name: initialData?.name ?? '',
 			date: initialData?.date ?? new Date(),
@@ -55,7 +55,7 @@ const ModalForm: FC<IModalForm> = ({ initialData }) => {
 
 	const onSubmit = (data: TableDataItem) => {
 		if (!initialData) {
-			dispatch(addNewTableDataItem(data));
+			dispatch(addNewTableDataItem({ ...data, key: generateRandomId() }));
 		} else {
 			dispatch(updateTableDataItem(data));
 		}
